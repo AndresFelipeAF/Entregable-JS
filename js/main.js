@@ -41,7 +41,7 @@ let operacion = prompt("Ingresar operación a utilizar ( +,-,*,/)");
      alert("Por favor ingresar una de las siguientes operaciones que se muestran en el mensaje, recarga la pagina");
  };
 
-// pregunta, como puedo hacer para validar que la persona entre correctamente el input de operaciones y logar que en el caso que se equivoque vuelva a estar en el ciclo.
+// pregunta, como puedo hacer para validar que la persona entre correctamente el input de operaciones y lograr que en el caso que se equivoque pueda volver a ingresar el prompt y la operación se repita.
 
 
 

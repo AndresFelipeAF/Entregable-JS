@@ -13,23 +13,30 @@ while(isNaN(numero1)|| isNaN(numero2)){
 };
 let operacion = prompt("Ingresar operación a utilizar ( +,-,*,/)");
 
- if ( operacion === "+"|| operacion === "-"|| operacion === "*" || operacion === "/" ){
+while ( operacion !== "+" && operacion !== "-"&&  operacion !== "*" &&  operacion !== "/" ){
 
-    switch(operacion){
+  
+     alert("Por favor ingresar una de las siguientes operaciones que se muestran en el mensaje, recarga la pagina");
+     operacion = prompt("Ingresar operación a utilizar ( +,-,*,/)");
+ };
+
+// funciones
+function operaciones ( n1,n2,simbolo){
+    switch(simbolo){
         case "+":
-            suma = numero1 + numero2 ;
+            suma = n1 + n2 ;
             console.log(suma);
             break;
         case "-":
-            resta = numero1 -numero2;
+            resta = n1 -n2;
             console.log(resta);
             break;
         case "/":
-            division = numero1/numero2;
+            division = n1/n2;
             console.log(division);
             break;
         case "*":
-            multiplicar = numero1*numero2;
+            multiplicar = n1*n2;
             console.log(multiplicar);
             break;
         default:
@@ -37,11 +44,10 @@ let operacion = prompt("Ingresar operación a utilizar ( +,-,*,/)");
             break;
     
     };
- }else {
-     alert("Por favor ingresar una de las siguientes operaciones que se muestran en el mensaje, recarga la pagina");
- };
+    
+}
 
-// pregunta, como puedo hacer para validar que la persona entre correctamente el input de operaciones y lograr que en el caso que se equivoque pueda volver a ingresar el prompt y la operación se repita.
+operaciones(numero1,numero2,operacion);
 
 
 

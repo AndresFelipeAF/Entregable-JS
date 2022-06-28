@@ -1,61 +1,47 @@
 
-// For loop
-let numero = parseInt(prompt("Ingresar numero"));
-let iteraciones = parseInt(prompt("numero de iteraciones"));
+// calculadora
 
-if((isNaN(numero)) ||( isNaN (iteraciones)) ){
-    alert("Por favor ingresar un numero")
-    numero = parseInt(prompt("Ingresar numero"));
-    iteraciones = parseInt(prompt("numero de iteraciones"))
-    for( i=0; i<=iteraciones; i++){
-
-        let suma = numero + i;
-        
-        console.log(suma);
-        };
-}else{
-    for( i=0; i<=iteraciones; i++){
-
-        let suma = numero + i;
-        
-        console.log(suma);
-        };
-    };
-
-// While loop
-
-let contador=0;
+let numero1 = parseInt(prompt("Para utilizar la calculadora por favor ingresar el primer numero"));
+let numero2 = parseInt(prompt("Ingresar numero 2 "));
 
 
-while(contador != 9){
-    contador  = parseInt(prompt("Ingresar el codigo del producto, 1= hamburguesa, 2 = pasta, 3= papa rellena, 4= empanada,  en caso de queres salir escribir 9"));
+while(isNaN(numero1)|| isNaN(numero2)){
+    alert("Por favor ingresar numeros")
+    
+ numero1 = parseInt(prompt("Para utilizar la calculadora por favor ingresar el primer numero"));
+ numero2 = parseInt(prompt("Ingresar numero 2 "));
+};
+let operacion = prompt("Ingresar operación a utilizar ( +,-,*,/)");
 
-    switch(contador){
-        case 1:
-            console.log("Gracias por comprar pasta");
-            alert("Gracias por comprar una hamburguesa");
+ if ( operacion === "+"|| operacion === "-"|| operacion === "*" || operacion === "/" ){
+
+    switch(operacion){
+        case "+":
+            suma = numero1 + numero2 ;
+            console.log(suma);
             break;
-        case 2:
-            console.log("Gracias por comprar pasta");
-            alert("Gracias por comprar pasta");
+        case "-":
+            resta = numero1 -numero2;
+            console.log(resta);
             break;
-        case 3:
-            console.log("Gracias por comprar pasta");
-            alert("Gracias por comprar una papa rellena");
+        case "/":
+            division = numero1/numero2;
+            console.log(division);
             break;
-        case 4:
-            console.log("Gracias por comprar pasta");
-            alert("Gracias por comprar una empanada");
-            break;
-        case 9:
-            alert("Gracias por tu compra")
+        case "*":
+            multiplicar = numero1*numero2;
+            console.log(multiplicar);
             break;
         default:
-            console.log("Gracias por comprar pasta");
-            alert("no existe la opciòn que marcaste");
+            alert("Se debe utilizar los simbolos que se encuentran en el cuadro de texto");
             break;
-
+    
     };
-   
-};
+ }else {
+     alert("Por favor ingresar una de las siguientes operaciones que se muestran en el mensaje, recarga la pagina");
+ };
+
+// pregunta, como puedo hacer para validar que la persona entre correctamente el input de operaciones y logar que en el caso que se equivoque vuelva a estar en el ciclo.
+
+
 

@@ -1,3 +1,22 @@
+// Persona que ingres a usar la calculadora
+let nombre = prompt("Ingresa tu nombre");
+let apellido=prompt("Ingres tu apellido");
+let codigo=parseInt(prompt("Ingresa tu codigo de estudiante"));
+
+function Persona(nombre,apellido,codigo){
+    this.nombre =nombre;
+    this.apellido= apellido;
+    this.codigo = codigo;
+
+};
+let usuario = new Persona (nombre,apellido, codigo);
+
+const personasIngresadas = [];
+personasIngresadas.unshift(usuario);
+
+console.log(personasIngresadas)
+
+alert("Hola "+ usuario.nombre + " " + usuario.apellido + " !");
 
 // calculadora
 

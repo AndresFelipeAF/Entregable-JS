@@ -9,10 +9,19 @@ function Persona(nombre,apellido,codigo){
     this.codigo = codigo;
 
 };
+
+
 let usuario = new Persona (nombre,apellido, codigo);
 
-const personasIngresadas = [];
-personasIngresadas.unshift(usuario);
+const personasIngresadas = [
+{nombre:"Sebastian",
+apellido:"Guerrero",
+codigo:110011},
+{nombre:"Valentina",
+apellido:"Escobar",
+codigo:144905}
+];
+personasIngresadas.push(usuario);
 
 console.log(personasIngresadas)
 
@@ -68,5 +77,11 @@ function operaciones ( n1,n2,simbolo){
 
 operaciones(numero1,numero2,operacion);
 
+
+let busqueda = prompt("Ingresar nombre para recibir codigo de ingreso del estudiante");
+
+let resultadoBusqueda = personasIngresadas.find((el)=>el.nombre===busqueda);
+
+console.log(resultadoBusqueda.codigo);
 
 

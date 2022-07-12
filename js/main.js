@@ -71,16 +71,37 @@ function operaciones ( n1,n2,simbolo){
             break;
     
     };
+// Como hago para poder poner el resultado en un texto, al tener diferentes resultados, no podria como tal poner una variable.Seria realizandolo como un evento ?
     
 }
 
 operaciones(numero1,numero2,operacion);
 
 
+// busqueda de usuarios, intentar no equivocarse, porque se crashea  y no sale el text. Que me aconsejarias ?
+
 let busqueda = prompt("Ingresar nombre para recibir codigo de ingreso del estudiante(Recordar mayuscula)");
 
 let resultadoBusqueda = personasIngresadas.find((el)=>el.nombre===busqueda);
 
 console.log(resultadoBusqueda.codigo);
+// modificando html
+
+const mensajeDespedida =document.createElement("main");
+
+mensajeDespedida.innerHTML="<p>Gracias por usar nuestros servicios</p>"
+
+
+
+document.body.appendChild(mensajeDespedida);
+
+
+const despedida = document.getElementById("msj");
+
+despedida.innerText= `Adios ${usuario.nombre}, vuelve pronto!!`
+
+
+
+
 
 

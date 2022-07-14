@@ -1,7 +1,8 @@
-// Persona que ingres a usar la calculadora
+// // Persona que ingres a usar la calculadora
 let nombre = prompt("Ingresa tu nombre");
 let apellido=prompt("Ingres tu apellido");
 let codigo=parseInt(prompt("Ingresa tu codigo de estudiante"));
+
 
 function Persona(nombre,apellido,codigo){
     this.nombre =nombre;
@@ -28,77 +29,101 @@ alert("Hola "+ usuario.nombre + " " + usuario.apellido + " !");
 
 // calculadora
 
-let numero1 = parseInt(prompt("Para utilizar la calculadora por favor ingresar el primer numero"));
-let numero2 = parseInt(prompt("Ingresar numero 2 "));
+// boton calcular 
+
+const botonCalcular= document.querySelector(".btnCalcular");
+const mensajeCalculadora = document.querySelector(".mensajeCalculadora");
 
 
-while(isNaN(numero1)|| isNaN(numero2)){
-    alert("Por favor ingresar numeros")
-    
- numero1 = parseInt(prompt("Para utilizar la calculadora por favor ingresar el primer numero"));
- numero2 = parseInt(prompt("Ingresar numero 2 "));
-};
-let operacion = prompt("Ingresar operación a utilizar ( +,-,*,/)");
-
-while ( operacion !== "+" && operacion !== "-"&&  operacion !== "*" &&  operacion !== "/" ){
-
-  
-     alert("Por favor ingresar una de las siguientes operaciones que se muestran en el mensaje, recarga la pagina");
-     operacion = prompt("Ingresar operación a utilizar ( +,-,*,/)");
- };
 
 // funciones
 function operaciones ( n1,n2,simbolo){
     switch(simbolo){
         case "+":
-            suma = n1 + n2 ;
+           let  suma = n1 + n2 ;
             console.log(suma);
+            mensajeCalculadora.innerText = `El resultado de la suma es ${suma}`;
             break;
         case "-":
-            resta = n1 -n2;
+            let resta = n1 -n2;
             console.log(resta);
+            mensajeCalculadora.innerText = `El resultado de la resta es ${resta}`;
             break;
         case "/":
-            division = n1/n2;
+            let division = n1/n2;
             console.log(division);
+            mensajeCalculadora.innerText = `El resultado de la división es ${division}`;
             break;
         case "*":
-            multiplicar = n1*n2;
+           let  multiplicar = n1*n2;
             console.log(multiplicar);
+            mensajeCalculadora.innerText = `El resultado de la multiplicación es ${multiplicar}`;
             break;
         default:
             alert("Se debe utilizar los simbolos que se encuentran en el cuadro de texto");
             break;
     
     };
-// Como hago para poder poner el resultado en un texto, al tener diferentes resultados, no podria como tal poner una variable.Seria realizandolo como un evento ?
+   
+};
+
+// Evento 
+botonCalcular.addEventListener("click",()=>{
+
+   
+    let numero1 = parseInt(document.getElementById("numero1").value);
+    let numero2 = parseInt(document.querySelector("#numero2").value);
+   
+    let operacion = document.getElementById("operacion").value;
+
+    if(isNaN(numero1)|| isNaN(numero2)){
+        alert("Por favor ingresar numeros")
+        
+    };
+    if ( operacion !== "+" && operacion !== "-"&&  operacion !== "*" &&  operacion !== "/" ){
+
+  
+        alert("Por favor ingresar una de las siguientes operaciones que se muestran en el mensaje, recarga la pagina");
     
-}
+    };
+   
+    operaciones(numero1,numero2,operacion);
 
-operaciones(numero1,numero2,operacion);
 
+});
 
-// busqueda de usuarios, intentar no equivocarse, porque se crashea  y no sale el text. Que me aconsejarias ?
+// Boton busqueda Usario 
 
-let busqueda = prompt("Ingresar nombre para recibir codigo de ingreso del estudiante(Recordar mayuscula)");
+let botonPersona = document.querySelector(".btnBuscar");
 
-let resultadoBusqueda = personasIngresadas.find((el)=>el.nombre===busqueda);
+botonPersona.addEventListener("click",()=>{
+    let busqueda = prompt("Ingresar nombre para recibir codigo de ingreso del estudiante(Recordar mayuscula)");
+    let seEncuentra = personasIngresadas.some((el)=>el.nombre === busqueda);
+    let msjePersona = document.querySelector(".codigoEstudiante");
+     if(seEncuentra === false ){
+        alert("la persona no se encuentra")
+     }else{
+        let resultadoBusqueda = personasIngresadas.find((el)=>el.nombre===busqueda);
+        msjePersona.innerText= (`La persona ${resultadoBusqueda.nombre} ${resultadoBusqueda.apellido} tiene el codigo ${resultadoBusqueda.codigo}`)
+     }
+    
+});
 
-console.log(resultadoBusqueda.codigo);
-// modificando html
-
+// // modificando html
+let btnFinal = document.querySelector(".terminar")
 const mensajeDespedida =document.createElement("main");
 
-mensajeDespedida.innerHTML="<p>Gracias por usar nuestros servicios</p>"
+btnFinal.addEventListener("click",()=>{
+    mensajeDespedida.innerHTML="<p>Gracias por usar nuestros servicios</p>"
 
+    document.body.appendChild(mensajeDespedida);
+    
+    
+    const despedida = document.getElementById("msj");
+    
+    despedida.innerText= `Adios ${usuario.nombre}, vuelve pronto!!`
+})
 
-
-document.body.appendChild(mensajeDespedida);
-
-
-const despedida = document.getElementById("msj");
-
-despedida.innerText= `Adios ${usuario.nombre}, vuelve pronto!!`
 
 
 

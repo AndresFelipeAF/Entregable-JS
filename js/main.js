@@ -1,7 +1,7 @@
 // // Persona que ingres a usar la calculadora
-let nombre = prompt("Ingresa tu nombre");
-let apellido=prompt("Ingres tu apellido");
-let codigo=parseInt(prompt("Ingresa tu codigo de estudiante"));
+const nombreP = prompt("Ingresa tu nombre");
+const apellidoP=prompt("Ingresa tu apellido");
+const codigo=parseInt(prompt("Ingresa tu codigo de estudiante"));
 
 
 function Persona(nombre,apellido,codigo){
@@ -12,7 +12,13 @@ function Persona(nombre,apellido,codigo){
 };
 
 
-let usuario = new Persona (nombre,apellido, codigo);
+let usuario = new Persona (nombreP,apellidoP, codigo);
+
+// stringify
+const usuarioJson= JSON.stringify(usuario);
+// Local storage
+localStorage.setItem("usuario", usuarioJson);
+
 const personasIngresadas = [
 {nombre:"Sebastian",
 apellido:"Guerrero",
@@ -25,7 +31,9 @@ personasIngresadas.push(usuario);
 
 console.log(personasIngresadas)
 
-alert("Hola "+ usuario.nombre + " " + usuario.apellido + " !");
+let {nombre,apellido} =usuario; 
+
+alert("Hola "+ nombre + " " + apellido + " !");
 
 // calculadora
 
@@ -71,49 +79,58 @@ function operaciones ( n1,n2,simbolo){
 botonCalcular.addEventListener("click",()=>{
 
    
-    let numero1 = parseInt(document.getElementById("numero1").value);
-    let numero2 = parseInt(document.querySelector("#numero2").value);
+    const numero1 = parseInt(document.getElementById("numero1").value);
+    const numero2 = parseInt(document.querySelector("#numero2").value);
    
-    let operacion = document.getElementById("operacion").value;
+    const operacion = document.getElementById("operacion").value;
 
-    if(isNaN(numero1)|| isNaN(numero2)){
-        alert("Por favor ingresar numeros")
-        
-    };
-    if ( operacion !== "+" && operacion !== "-"&&  operacion !== "*" &&  operacion !== "/" ){
 
-  
+
+    // Operación AND
+
+        ( operacion !== "+" && operacion !== "-"&&  operacion !== "*" &&  operacion !== "/" )&&
         alert("Por favor ingresar una de las siguientes operaciones que se muestran en el mensaje, recarga la pagina");
-    
-    };
-   
-    operaciones(numero1,numero2,operacion);
 
+
+     if(isNaN(numero1)|| isNaN(numero2)){
+         alert("Por favor ingresar numeros")
+         
+     }else{
+        operaciones(numero1,numero2,operacion);
+     };
 
 });
 
-// Boton busqueda Usario 
+// Boton busqueda Usuario 
 
-let botonPersona = document.querySelector(".btnBuscar");
+const botonPersona = document.querySelector(".btnBuscar");
 
 botonPersona.addEventListener("click",()=>{
-    let busqueda = prompt("Ingresar nombre para recibir codigo de ingreso del estudiante(Recordar mayuscula)");
-    let seEncuentra = personasIngresadas.some((el)=>el.nombre === busqueda);
-    let msjePersona = document.querySelector(".codigoEstudiante");
-     if(seEncuentra === false ){
-        alert("la persona no se encuentra")
-     }else{
-        let resultadoBusqueda = personasIngresadas.find((el)=>el.nombre===busqueda);
-        msjePersona.innerText= (`La persona ${resultadoBusqueda.nombre} ${resultadoBusqueda.apellido} tiene el codigo ${resultadoBusqueda.codigo}`)
-     }
+    const busqueda = prompt("Ingresar nombre para recibir codigo de ingreso del estudiante(Recordar mayuscula)");
+    const seEncuentra = personasIngresadas.some((el)=>el.nombre === busqueda);
+    const msjePersona = document.querySelector(".codigoEstudiante");
+    const resultadoBusqueda = personasIngresadas.find((el)=>el.nombre===busqueda);
+    // operación ternaria 
+    seEncuentra === false ? alert("la persona no se encuentra"): msjePersona.innerText= (`La persona ${resultadoBusqueda.nombre} ${resultadoBusqueda.apellido} tiene el codigo ${resultadoBusqueda.codigo}`)
+
     
 });
 
-// // modificando html
-let btnFinal = document.querySelector(".terminar")
+// modificando html
+
+
+
+const btnFinal = document.querySelector(".terminar")
 const mensajeDespedida =document.createElement("main");
 
+
+
 btnFinal.addEventListener("click",()=>{
+
+    // parse
+    const usuarioParse = JSON.parse(usuarioJson);
+    // get item storage
+    localStorage.getItem(usuarioParse);
     mensajeDespedida.innerHTML="<p>Gracias por usar nuestros servicios</p>"
 
     document.body.appendChild(mensajeDespedida);
@@ -121,7 +138,8 @@ btnFinal.addEventListener("click",()=>{
     
     const despedida = document.getElementById("msj");
     
-    despedida.innerText= `Adios ${usuario.nombre}, vuelve pronto!!`
+    let {nombre}= usuarioParse;
+    despedida.innerText= `Adios ${nombre}, vuelve pronto!!`
 })
 
 

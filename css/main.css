@@ -1,12 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: grey;
+}
+/* titulo */
+.titulo{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: white;
+    margin: 10px;
+    border: 2px solid black;
+}
+
 h1 {
-    color: blue;
-    font-size: 20px;
-    padding-top:20px;
+    color: black;
+    padding: 10px;
+   
+    
+ } 
+
+/* Ingreso usuarios */
+
+.ingresoUsuarios{
+    height: 110px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid black;
+    
+
+
+}
+
+section{
+    display: flex;
+    justify-content: center;
+}
+.ingresoUsuarios>input{
+    display: block;
+   height: 20px;
+
+}
+
+.ingresoUsuarios h2{
+    font-size: medium+5px;
+    margin: 5px;
+}
+
+.buttonInput{
+    padding: 2px;
+    margin: 2px;
+    border: 1px solid black;
+}
+
+button:hover{
+    background-color: green;
+
+}
+
+
+/* calculadora */
+
+form{
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    border: 2px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+form button{
+    margin: 3px;
+    border: 1px solid black;
+}
+
+.mensajeCalculadora{
+    background-color: green;
+
+}
+
+
+/* ultimos botones */
+
+.ultimosBotones {
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-
-p{
-    color: black;
-    font-size: 10px;
+.ultimosBotones button{
+    margin: 5px;
+    
 }

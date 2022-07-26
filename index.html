@@ -8,8 +8,22 @@
     <title>Primera entrega </title>
 </head>
 <body>
-  <h1>Entregable</h1>
-    <form action="">
+  <div class="titulo">
+    <h1>Bienvenidos estudiantes</h1>
+  </div>
+  
+  <section >
+    <div class="ingresoUsuarios">
+      <h2>Ingresa tu nombre</h2>
+    <input type="text" class="nombreInput">
+    <input type="text" class="apellidoInput">
+    <button class="buttonInput">Ingresar</button>
+    </div>
+    
+
+  </section>
+  <section>
+    <form   action="">
       <label for="numero1">Numero 1 </label>
       <input id="numero1" class="numero1" type="text">
       <label for="numero2">Numero 2 </label>
@@ -17,12 +31,17 @@
       <label for="operacion">Operación</label>
       <input id="operacion" class="operacion" type="text">
       <button class="btnCalcular" type="button">Calcular</button>
+      <p class="mensajeCalculadora"></p>
     </form>
-    <p class="mensajeCalculadora"></p>
+    
+  </section>
+   <section  class="ultimosBotones">
     <button class="btnBuscar">Buscar usuario </button>
     <p class="codigoEstudiante"></p>
     <button class="terminar">He terminado</button>
     <p id="msj"></p>
+   </section>
+   
   <script src="js/main.js"></script>  
 </body>
 </html>

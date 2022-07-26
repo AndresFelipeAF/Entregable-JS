@@ -1,8 +1,10 @@
 // // Persona que ingres a usar la calculadora
-const nombreP = prompt("Ingresa tu nombre");
-const apellidoP=prompt("Ingresa tu apellido");
-const codigo=parseInt(prompt("Ingresa tu codigo de estudiante"));
+// const nombreP = prompt("Ingresa tu nombre");
+// const apellidoP=prompt("Ingresa tu apellido");
+// const codigo=parseInt(prompt("Ingresa tu codigo de estudiante"));
 
+const buttonI = document.querySelector(".buttonInput");
+// función crear persona
 
 function Persona(nombre,apellido,codigo){
     this.nombre =nombre;
@@ -10,30 +12,59 @@ function Persona(nombre,apellido,codigo){
     this.codigo = codigo;
 
 };
+ // lista de personas
+ const personasIngresadas = [
+    {nombre:"Sebastian",
+    apellido:"Guerrero",
+    codigo:110011},
+    {nombre:"Valentina",
+    apellido:"Escobar",
+    codigo:144905}
+    ];
+// Evento ingreso 
+
+buttonI.addEventListener("click",()=>{
+    const nombreI= document.querySelector(".nombreInput").value;
+    const apellidoI = document.querySelector(".apellidoInput").value;
+
+   
+    if ( nombreI === ""|| apellidoI ==="" ){
+        alert("ingresar un valor correcto")
+    }else{
+        let codigo= "1122" + nombreI[0] +  apellidoI[0];
+        console.log(codigo);
+        console.log(nombreI);
+        console.log(apellidoI);
+    
+        let usuario = new Persona (nombreI,apellidoI, codigo);
+        console.log(usuario);
+
+        // Agregar usuario a array
+        personasIngresadas.push(usuario);
+        // stringify
+        const personaIJSON= JSON.stringify(personasIngresadas);
+        const usuarioJson= JSON.stringify(usuario);
+        // Local storage
+       
+
+        localStorage.setItem("personaIngresadas", personaIJSON);
+        localStorage.setItem("usuarioJson",usuarioJson);
+    
+      
+    
+        console.log(personasIngresadas);
+        // alerta de bienvenida del usuario 
+    
+        let {nombre,apellido} =usuario; 
+    
+        alert("Hola "+ nombre + " " + apellido + " !");
+
+    }
+})
 
 
-let usuario = new Persona (nombreP,apellidoP, codigo);
 
-// stringify
-const usuarioJson= JSON.stringify(usuario);
-// Local storage
-localStorage.setItem("usuario", usuarioJson);
 
-const personasIngresadas = [
-{nombre:"Sebastian",
-apellido:"Guerrero",
-codigo:110011},
-{nombre:"Valentina",
-apellido:"Escobar",
-codigo:144905}
-];
-personasIngresadas.push(usuario);
-
-console.log(personasIngresadas)
-
-let {nombre,apellido} =usuario; 
-
-alert("Hola "+ nombre + " " + apellido + " !");
 
 // calculadora
 
@@ -131,6 +162,8 @@ btnFinal.addEventListener("click",()=>{
     const usuarioParse = JSON.parse(usuarioJson);
     // get item storage
     localStorage.getItem(usuarioParse);
+    localStorage.getItem(listaPersona);
+
     mensajeDespedida.innerHTML="<p>Gracias por usar nuestros servicios</p>"
 
     document.body.appendChild(mensajeDespedida);
@@ -140,7 +173,7 @@ btnFinal.addEventListener("click",()=>{
     
     let {nombre}= usuarioParse;
     despedida.innerText= `Adios ${nombre}, vuelve pronto!!`
-})
+});
 
 
 

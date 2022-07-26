@@ -40,6 +40,7 @@ h1 {
 section{
     display: flex;
     justify-content: center;
+    
 }
 .ingresoUsuarios>input{
     display: block;
@@ -96,4 +97,7 @@ form button{
 .ultimosBotones button{
     margin: 5px;
     
+}
+p{
+    text-align: center;
 }

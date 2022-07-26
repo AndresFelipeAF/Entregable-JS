@@ -1,8 +1,3 @@
-// // Persona que ingres a usar la calculadora
-// const nombreP = prompt("Ingresa tu nombre");
-// const apellidoP=prompt("Ingresa tu apellido");
-// const codigo=parseInt(prompt("Ingresa tu codigo de estudiante"));
-
 const buttonI = document.querySelector(".buttonInput");
 // función crear persona
 
@@ -28,13 +23,13 @@ buttonI.addEventListener("click",()=>{
     const apellidoI = document.querySelector(".apellidoInput").value;
 
    
-    if ( nombreI === ""|| apellidoI ==="" ){
-        alert("ingresar un valor correcto")
+    if ( nombreI === "" || apellidoI ==="" ){
+
+        alert("ingresar un valor correcto");
+
     }else{
         let codigo= "1122" + nombreI[0] +  apellidoI[0];
-        console.log(codigo);
-        console.log(nombreI);
-        console.log(apellidoI);
+
     
         let usuario = new Persona (nombreI,apellidoI, codigo);
         console.log(usuario);
@@ -158,11 +153,14 @@ const mensajeDespedida =document.createElement("main");
 
 btnFinal.addEventListener("click",()=>{
 
-    // parse
-    const usuarioParse = JSON.parse(usuarioJson);
-    // get item storage
-    localStorage.getItem(usuarioParse);
-    localStorage.getItem(listaPersona);
+    const usuarioPrueba = JSON.parse(window.localStorage.getItem("usuarioJson"));
+    console.log(usuarioPrueba);
+
+    // // parse
+    // const usuarioParse = JSON.parse(usuarioJson);
+    // // get item storage
+    // localStorage.getItem(usuarioParse);
+    // localStorage.getItem(listaPersona);
 
     mensajeDespedida.innerHTML="<p>Gracias por usar nuestros servicios</p>"
 
@@ -171,7 +169,7 @@ btnFinal.addEventListener("click",()=>{
     
     const despedida = document.getElementById("msj");
     
-    let {nombre}= usuarioParse;
+    let {nombre}= usuarioPrueba;
     despedida.innerText= `Adios ${nombre}, vuelve pronto!!`
 });
 

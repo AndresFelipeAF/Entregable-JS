@@ -1,4 +1,5 @@
 const buttonI = document.querySelector(".buttonInput");
+const alert1 = document.querySelector(".alert");
 // función crear persona
 
 function Persona(nombre,apellido,codigo){
@@ -24,8 +25,12 @@ buttonI.addEventListener("click",()=>{
 
    
     if ( nombreI === "" || apellidoI ==="" ){
-
-        alert("ingresar un valor correcto");
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'ingresar un valor correcto',
+          })
+   
 
     }else{
         let codigo= "1122" + nombreI[0] +  apellidoI[0];
@@ -51,11 +56,18 @@ buttonI.addEventListener("click",()=>{
         // alerta de bienvenida del usuario 
     
         let {nombre,apellido} =usuario; 
-    
-        alert("Hola "+ nombre + " " + apellido + " !");
+        Toastify({
+            text: "Hola "+ nombre + " " + apellido + " !",
+            className: "info",
+            style: {
+              background: "linear-gradient(to right, #00b09b, #96c93d)",
+            }
+          }).showToast();
 
-    }
-})
+       
+           
+    };
+});
 
 
 
@@ -94,7 +106,7 @@ function operaciones ( n1,n2,simbolo){
             mensajeCalculadora.innerText = `El resultado de la multiplicación es ${multiplicar}`;
             break;
         default:
-            alert("Se debe utilizar los simbolos que se encuentran en el cuadro de texto");
+            
             break;
     
     };
@@ -114,12 +126,20 @@ botonCalcular.addEventListener("click",()=>{
 
     // Operación AND
 
-        ( operacion !== "+" && operacion !== "-"&&  operacion !== "*" &&  operacion !== "/" )&&
-        alert("Por favor ingresar una de las siguientes operaciones que se muestran en el mensaje, recarga la pagina");
+        ( operacion !== "+" && operacion !== "-"&&  operacion !== "*" &&  operacion !== "/" )&& Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '"Por favor ingresar una de las siguientes operaciones que se muestran en el mensaje, recarga la pagina"',
+          });
+         
 
 
      if(isNaN(numero1)|| isNaN(numero2)){
-         alert("Por favor ingresar numeros")
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingresar numeros',
+          })
          
      }else{
         operaciones(numero1,numero2,operacion);

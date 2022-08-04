@@ -1,0 +1,33 @@
+[
+    {
+       "nombre":"Sebastian",
+       "apellido":"Guerrero",
+       "codigo":110011
+    },
+    {
+       "nombre":"Valentina",
+       "apellido":"Escobar",
+       "codigo":144905
+    },
+    {
+       "nombre":"Daniela",
+       "apellido":"Velazco",
+       "codigo":12341
+    },
+    {
+       "nombre":"Pepe",
+       "apellido":"Velazco",
+       "codigo":12341
+    },
+    {
+       "nombre":"Pilar",
+       "apellido":"Duque",
+       "codigo":12341
+    },
+    {
+       "nombre":"Daniela",
+       "apellido":"Velez",
+       "codigo":12341
+    }
+ ]
+ 

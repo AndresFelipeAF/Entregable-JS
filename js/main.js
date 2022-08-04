@@ -15,7 +15,10 @@ function Persona(nombre,apellido,codigo){
     codigo:110011},
     {nombre:"Valentina",
     apellido:"Escobar",
-    codigo:144905}
+    codigo:144905},
+    {nombre:"Daniela",
+    apellido:"Velazco",
+    codigo:12341}
     ];
 // Evento ingreso 
 
@@ -143,6 +146,12 @@ botonCalcular.addEventListener("click",()=>{
          
      }else{
         operaciones(numero1,numero2,operacion);
+
+        
+        setTimeout(()=>{
+            mensajeCalculadora.innerText="";
+        },4000)
+
      };
 
 });
@@ -191,6 +200,48 @@ btnFinal.addEventListener("click",()=>{
     
     let {nombre}= usuarioPrueba;
     despedida.innerText= `Adios ${nombre}, vuelve pronto!!`
+
+
+    fetch(url).then((response)=>{
+            response.json()
+            }).then((post)=>{
+           return post 
+            });
+    
+       
+            post.forEach(element => {
+            const  li= document.lista.createElement("li");
+            li.innerHTML=`
+            <h1>hola</h1>
+            `;
+            });
+});
+
+const titulo=document.querySelector(".fetch");
+const lista=document.querySelector(".listaUL");
+const btnLista=document.querySelector(".lista");
+console.log(btnLista);
+// Fetch and promises
+
+
+btnLista.addEventListener("click",()=>{
+
+
+    fetch("./data/gradoA.json")
+    .then(resp=> resp.json())
+    .then((data)=>{
+            data.forEach(element=> {
+                [nombre,apellido,codigo]=element;
+                const  li= document.lista.createElement("li");
+                li.innerHTML=`
+                <h1>${nombre} ${apellido} Codigo= ${codigo}</h1>
+                `;
+                });
+
+
+        });
+
+      
 });
 
 

@@ -176,7 +176,6 @@ botonPersona.addEventListener("click",()=>{
 
 
 const btnFinal = document.querySelector(".terminar")
-const mensajeDespedida =document.createElement("main");
 
 
 
@@ -191,9 +190,7 @@ btnFinal.addEventListener("click",()=>{
     // localStorage.getItem(usuarioParse);
     // localStorage.getItem(listaPersona);
 
-    mensajeDespedida.innerHTML="<p>Gracias por usar nuestros servicios</p>"
-
-    document.body.appendChild(mensajeDespedida);
+   
     
     
     const despedida = document.getElementById("msj");
@@ -201,20 +198,6 @@ btnFinal.addEventListener("click",()=>{
     let {nombre}= usuarioPrueba;
     despedida.innerText= `Adios ${nombre}, vuelve pronto!!`
 
-
-    fetch(url).then((response)=>{
-            response.json()
-            }).then((post)=>{
-           return post 
-            });
-    
-       
-            post.forEach(element => {
-            const  li= document.lista.createElement("li");
-            li.innerHTML=`
-            <h1>hola</h1>
-            `;
-            });
 });
 
 const titulo=document.querySelector(".fetch");
@@ -230,14 +213,20 @@ btnLista.addEventListener("click",()=>{
     fetch("./data/gradoA.json")
     .then(resp=> resp.json())
     .then((data)=>{
-            data.forEach(element=> {
-                [nombre,apellido,codigo]=element;
-                const  li= document.lista.createElement("li");
-                li.innerHTML=`
-                <h1>${nombre} ${apellido} Codigo= ${codigo}</h1>
-                `;
-                });
-
+        console.log(data);
+            let html;
+            lista.innerHTML=(`<h2 class="tituloColegio">
+            Lista Colegio Hispanoamericano
+            </h2>`);
+        for (const key of data){
+            html=`
+            <li class="listaNombres">
+            <h1>${key.nombre} ${key.apellido} Codigo = ${key.codigo}</h1>
+            <li/>
+            `
+          
+            lista.innerHTML += html
+        }
 
         });
 
@@ -248,5 +237,10 @@ btnLista.addEventListener("click",()=>{
 
 
 
-
+     // data.forEach((element)=> {
+            //     const li = document.createElement("li")
+            //      li.innerHTML=`
+            //     <h1>${element.nombre} ${element.apellido} Codigo= ${element.codigo}</h1>`
+            //     });
+            //     lista.appendChild(li);
 

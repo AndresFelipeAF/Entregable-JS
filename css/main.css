@@ -101,3 +101,17 @@ form button{
 p{
     text-align: center;
 }
+
+/* section imprimir lista */
+
+.tituloColegio{
+    text-align: left;
+    padding: 10px;
+    font-size: 15px;
+}
+ul li{
+    list-style: none;
+    border: 1px solid;
+    padding: 1px;
+    font-size: 10px;
+}

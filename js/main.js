@@ -167,7 +167,9 @@ botonPersona.addEventListener("click",()=>{
     const resultadoBusqueda = personasIngresadas.find((el)=>el.nombre===busqueda);
     // operación ternaria 
     seEncuentra === false ? alert("la persona no se encuentra"): msjePersona.innerText= (`La persona ${resultadoBusqueda.nombre} ${resultadoBusqueda.apellido} tiene el codigo ${resultadoBusqueda.codigo}`)
-
+    setTimeout(()=>{
+        msjePersona.innerText="";
+    },4000)
     
 });
 
@@ -197,7 +199,9 @@ btnFinal.addEventListener("click",()=>{
     
     let {nombre}= usuarioPrueba;
     despedida.innerText= `Adios ${nombre}, vuelve pronto!!`
-
+    setTimeout(()=>{
+        despedida.innerText="";
+    },5000)
 });
 
 const titulo=document.querySelector(".fetch");
@@ -227,6 +231,9 @@ btnLista.addEventListener("click",()=>{
           
             lista.innerHTML += html
         }
+        setTimeout(()=>{
+            lista.innerHTML="";
+        },10000)
 
         });
 

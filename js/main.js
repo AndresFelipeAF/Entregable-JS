@@ -6,7 +6,6 @@ function Persona(nombre, apellido, codigo) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.codigo = codigo;
-
 };
 // lista de personas
 const personasIngresadas = [
@@ -27,11 +26,9 @@ const personasIngresadas = [
     }
 ];
 // Evento ingreso 
-
 buttonI.addEventListener("click", () => {
     const nombreI = document.querySelector(".nombreInput").value;
     const apellidoI = document.querySelector(".apellidoInput").value;
-
 
     if (nombreI === "" || apellidoI === "") {
         Swal.fire({
@@ -39,15 +36,10 @@ buttonI.addEventListener("click", () => {
             title: 'Oops...',
             text: 'ingresar un valor correcto',
         })
-
-
     } else {
         let codigo = "1122" + nombreI[0] + apellidoI[0];
-
-
         let usuario = new Persona(nombreI, apellidoI, codigo);
         console.log(usuario);
-
         // Agregar usuario a array
         personasIngresadas.push(usuario);
         // stringify
@@ -117,7 +109,7 @@ botonCalcular.addEventListener("click", () => {
     (operacion !== "+" && operacion !== "-" && operacion !== "*" && operacion !== "/") && Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: '"Por favor ingresar una de las siguientes operaciones que se muestran en el mensaje, recarga la pagina"',
+        text: '"Por favor ingresar una de las siguientes operaciones (+,-,/ y *)"',
     });
 
     if (isNaN(numero1) || isNaN(numero2)) {
@@ -145,7 +137,11 @@ botonPersona.addEventListener("click", () => {
     const msjePersona = document.querySelector(".codigoEstudiante");
     const { nombre, apellido, codigo } = personasIngresadas.find((person) => person.nombre === busqueda);
     // operación ternaria 
-    seEncuentra === false ? alert("la persona no se encuentra") : msjePersona.innerText = (`La persona ${nombre} ${apellido} tiene el codigo ${codigo}`);
+    seEncuentra === true ?  msjePersona.innerText = (`La persona ${nombre} ${apellido} tiene el codigo ${codigo}`): Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'El usuario no se encuentra',
+    });
 
     setTimeout(() => {
         msjePersona.innerText = "";
